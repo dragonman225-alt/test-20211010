@@ -1,25 +1,17 @@
-import styles from "./App.module.scss";
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
-import { SecondHeader } from "./components/SecondHeader";
-import { Content } from "./components/Content";
+import { useReducer } from "react";
+
+import { Card } from "./components/Card";
+import { AppStateContext } from "./store/appStateContext";
+import { appStateReducer } from "./store/appStateReducer";
+import { defaultAppState } from "./store/defaultAppState";
 
 function App() {
+  const [state, dispatch] = useReducer(appStateReducer, defaultAppState);
+
   return (
-    <div className={styles.app}>
-      <div className={styles.fixedSizeBlock}>
-        <Header />
-      </div>
-      <div className={styles.fixedSizeBlock}>
-        <SecondHeader />
-      </div>
-      <div className={styles.content}>
-        <Content />
-      </div>
-      <div className={styles.fixedSizeBlock}>
-        <Footer />
-      </div>
-    </div>
+    <AppStateContext.Provider value={{ ...state, dispatch }}>
+      <Card />
+    </AppStateContext.Provider>
   );
 }
 

@@ -1,13 +1,38 @@
+import { useContext } from "react";
 import classNames from "classnames";
-import styles from "./styles.module.scss";
 
-function Button({ selected, onClick, children }) {
+import styles from "./styles.module.scss";
+import { AppStateContext } from "../../store/appStateContext";
+import { TAB } from "../../store/tabs";
+import { ACTION } from "../../store/actions";
+
+function TabButton({ representTab, children }) {
+  const { currentTab, dispatch } = useContext(AppStateContext);
+
   return (
     <button
-      class={classNames(styles.button, selected && styles.selected)}
-      onClick={onClick}
+      className={classNames(
+        styles.button,
+        currentTab === representTab && styles.selected
+      )}
+      onClick={() =>
+        dispatch({ type: ACTION.SWITCH_TO_TAB, data: representTab })
+      }
     >
       {children}
+    </button>
+  );
+}
+
+function HideButton() {
+  const { dispatch } = useContext(AppStateContext);
+
+  return (
+    <button
+      className={styles.button}
+      onClick={() => dispatch({ type: ACTION.TOGGLE_SECONDHEADER })}
+    >
+      HIDE
     </button>
   );
 }
@@ -16,31 +41,31 @@ export function SecondHeader() {
   return (
     <nav className={styles.secondHeader}>
       <ul>
-        <Button>
-          <li>ALL</li>
-        </Button>
         <li>
-          <Button>
-            <i class="fab fa-twitter"></i>
-          </Button>
+          <TabButton representTab={TAB.ALL}>ALL</TabButton>
         </li>
         <li>
-          <Button>
-            <i class="fab fa-facebook-f"></i>
-          </Button>
+          <TabButton representTab={TAB.TWITTER}>
+            <i className="fab fa-twitter"></i>
+          </TabButton>
         </li>
         <li>
-          <Button>
-            <i class="fab fa-instagram"></i>
-          </Button>
+          <TabButton representTab={TAB.FACEBOOK}>
+            <i className="fab fa-facebook-f"></i>
+          </TabButton>
         </li>
         <li>
-          <Button>
-            <i class="fab fa-youtube"></i>
-          </Button>
+          <TabButton representTab={TAB.INSTAGRAM}>
+            <i className="fab fa-instagram"></i>
+          </TabButton>
+        </li>
+        <li>
+          <TabButton representTab={TAB.YOUTUBE}>
+            <i className="fab fa-youtube"></i>
+          </TabButton>
         </li>
       </ul>
-      <Button>HIDE</Button>
+      <HideButton />
     </nav>
   );
 }
