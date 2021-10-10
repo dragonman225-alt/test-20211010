@@ -5,15 +5,11 @@
   flex-direction: column;
 }
 
-.headers {
+.fixedSizeBlock {
   flex: 0 0 auto;
 }
 
 .content {
   flex: 1 1 0px;
   overflow: hidden;
-}
-
-.footer {
-  flex: 0 0 auto;
 }
