@@ -1,0 +1,25 @@
+.bar {
+  background: var(--light-grey);
+  position: relative;
+  height: 1.25rem;
+}
+
+.barFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--yellow);
+  height: 100%;
+}
+
+.percentText {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9em;
+  font-weight: bold;
+  padding-right: 0.3rem;
+}

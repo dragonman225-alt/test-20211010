@@ -1,8 +1,10 @@
 :root {
   --blue: #3e8acc;
-  --yellow: #f7e700;
+  --yellow: #fadd00;
   --black: #4e4a4a;
   --white: white;
+  --grey: #9e9e9e;
+  --light-grey: #dcdcdc;
   --hover: rgba(0, 0, 0, 0.08);
   --active: rgba(0, 0, 0, 0.16);
 }

@@ -1,0 +1,52 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  h2 {
+    flex: 0 0 auto;
+    font-size: 0.75rem;
+    color: var(--grey);
+    padding: 0.3rem;
+    margin: 0;
+  }
+}
+
+.table {
+  flex: 1 1 0px;
+  overflow: auto;
+  font-size: 0.8rem;
+  padding: 0 0.3rem 0.3rem;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    font-size: 0.9em;
+    font-weight: normal;
+    border-bottom: 2px solid var(--light-grey);
+    padding: 0 0.3rem;
+
+    &:first-child {
+      text-align: left;
+    }
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+
+  td {
+    padding: 0.4rem;
+
+    &:first-child {
+      font-weight: bold;
+    }
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+}
